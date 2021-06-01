@@ -1,4 +1,14 @@
-﻿
+﻿function toggleSideBar() {
+    if ($("#main").width() === 0) {
+        $("#sidebar").hide();
+        $("#main").width("100%");
+    } else {
+        $("#sidebar").attr('style', 'display: block !important');
+        $("#main").width("0");
+    }
+    map.updateSize();
+}
+
 function toggleCategory(which, icon) {
     if ($('#' + which).is(':visible')) {
         $('#' + which).hide();
@@ -116,10 +126,16 @@ function getVisParamsUI() {
 }
 
 function getCloseModalUI(route) {
-    var link = route + "(); jQuery(exampleModal).modal('hide');$('#overlay').show();";
+    var link = route + "();";
     return '<span id="modalerror" style="color:red; font-weight:600;"></span></div>' +
         '<div class="modal-footer">' +
         '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>' +
         '<button type="button" class="btn btn-primary" onclick="' + link + '">Submit</button>' +
         '</div>';
+}
+
+function enableRequestUI() {
+    jQuery(exampleModal).modal('hide');
+    toggleSideBar();
+    $('#overlay').show();
 }

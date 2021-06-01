@@ -4,6 +4,7 @@ $(function () {
 });
 
 function test() {
+    enableRequestUI();
     $.ajax({
         url: api_url + "test",
         type: "POST",
@@ -16,6 +17,7 @@ function test() {
 }
 
 function getImageCollection() {
+    enableRequestUI();
     const theJson = {
         collectionName: $("#imageName").val(),
         visParams: JSON.parse($("#visParams").val()),

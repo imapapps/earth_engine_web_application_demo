@@ -26,6 +26,7 @@ function addMapLayer(data) {
             console.warn("Wrong Data Returned");
         }
     }
+    $("#overlay").hide();
 }
 
 function addTileServerURL(url, layerID) {
@@ -37,3 +38,11 @@ function addTileServerURL(url, layerID) {
     });
     map.addLayer(geeLayer);
 };
+
+function removeLayer(which) {
+    map.getLayers().forEach(function (layer) {
+        if (layer.get('id') != undefined && layer.get('id') === which) {
+            map.removeLayer(layer);
+        }
+    });
+}

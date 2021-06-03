@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8" />
     <title>Earth Engine Demo</title>
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css"
+    />
     <!-- Bootstrap core CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-          href="css/earthenginedemo.css" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/earthenginedemo.css" />
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-            crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -21,65 +27,119 @@
     <script src="js/ui_utils.js"></script>
     <script src="js/map_utils.js"></script>
     <script src="js/earthenginedemo.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">EE App Demo</a>
-        <span data-feather="settings" id="gear" onclick="toggleSideBar()"></span>
-        <div style="position:relative;right: 10px;">
-            <a href="https://imapapps.com" title="IMapApps: Development">
-                <img src="https://img.shields.io/badge/IMapApps-Development-green" alt="IMapApps: Development" title="IMapApps: Development">
-            </a>
-        </div>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">EE App Demo</a>
+      <span data-feather="settings" id="gear" onclick="toggleSideBar()"></span>
+      <div style="position: relative; right: 10px">
+        <a href="https://imapapps.com" title="IMapApps: Development">
+          <img
+            src="https://img.shields.io/badge/IMapApps-Development-green"
+            alt="IMapApps: Development"
+            title="IMapApps: Development"
+          />
+        </a>
+      </div>
     </nav>
     <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebar" class="col-md-3 d-none d-md-block col-lg-2 bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <span data-feather="home"></span> Dashboard <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="cursor: pointer;">
-                        <span onclick="toggleCategory('maproutelist', 'mrexpand')">Mapping requests <span id="mrexpand" data-feather="minus-circle"></span></span>
-                    </h6>
-                    <ul class="nav flex-column" id="maproutelist">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadparameterPanel('test');event.preventDefault();" title="test route">
-                                <span data-feather="map"></span> test
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadparameterPanel('getImageCollection');event.preventDefault();" title="getImageCollection route">
-                                <span data-feather="map"></span> getImageCollection
-                            </a>
-                        </li>
-                    </ul>
+      <div class="row">
+        <nav
+          id="sidebar"
+          class="col-md-3 d-none d-md-block col-lg-2 bg-light sidebar"
+        >
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <span data-feather="home"></span> Dashboard
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+            </ul>
+            <h6
+              class="
+                sidebar-heading
+                d-flex
+                justify-content-between
+                align-items-center
+                px-3
+                mt-4
+                mb-1
+                text-muted
+              "
+              style="cursor: pointer"
+            >
+              <span onclick="toggleCategory('maproutelist', 'mrexpand')"
+                >Mapping requests
+                <span id="mrexpand" data-feather="minus-circle"></span
+              ></span>
+            </h6>
+            <ul class="nav flex-column" id="maproutelist">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="#"
+                  onclick="loadparameterPanel('test');event.preventDefault();"
+                  title="test route"
+                >
+                  <span data-feather="map"></span> test
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="#"
+                  onclick="loadparameterPanel('meanImageByCollection');event.preventDefault();"
+                  title="meanImageByCollection route"
+                >
+                  <span data-feather="map"></span> meanImageByCollection
+                </a>
+              </li>
+            </ul>
 
-
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="cursor: pointer;">
-                        <span onclick="toggleCategory('graphroutelist', 'grexpand')">Graphing requests <span id='grexpand' data-feather="minus-circle"></span></span>
-                    </h6>
-                    <ul class="nav flex-column mb-2" id="graphroutelist">
-                        <li class="nav-item">
-                            <span class="nav-link"> <span data-feather="activity"></span>Coming Soon</span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <main id="main" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <div id="map" class="smallmap"></div>
-                <div id="graphcontainer" style="height: calc(50vh - 50px);"></div>
-            </main>
-        </div>
+            <h6
+              class="
+                sidebar-heading
+                d-flex
+                justify-content-between
+                align-items-center
+                px-3
+                mt-4
+                mb-1
+                text-muted
+              "
+              style="cursor: pointer"
+            >
+              <span onclick="toggleCategory('graphroutelist', 'grexpand')"
+                >Graphing requests
+                <span id="grexpand" data-feather="minus-circle"></span
+              ></span>
+            </h6>
+            <ul class="nav flex-column mb-2" id="graphroutelist">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="#"
+                  onclick="loadparameterPanel('comingSoon');event.preventDefault();"
+                  title="comingSoon route"
+                >
+                  <span data-feather="map"></span> comingSoon
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <main id="main" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div id="map" class="smallmap"></div>
+          <div id="graphcontainer" style="height: calc(50vh - 50px)"></div>
+        </main>
+      </div>
     </div>
-    <div id="overlay" style="display:none;"></div>
+    <div id="overlay" style="display: none"></div>
 
     <script>
-        feather.replace()
+      feather.replace();
     </script>
-</body>
+  </body>
 </html>

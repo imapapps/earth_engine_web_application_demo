@@ -46,3 +46,40 @@ function removeLayer(which) {
     }
   });
 }
+
+function addInteraction(which) {
+
+    var source = new ol.source.Vector({ wrapX: false });
+    var vectorLayer = new ol.layer.Vector({
+        source: source,
+        id: 'drawLayer',
+    });
+
+    map.addLayer(vectorLayer);
+
+    draw = new ol.interaction.Draw({
+        source: source,
+        type: which,
+    });
+    map.addInteraction(draw);
+    draw.on('drawend', drawEnd);
+}
+
+
+function drawEnd(event) {
+    map.removeInteraction(draw);
+    var geom = event.feature.getGeometry().clone().transform('EPSG:3857', 'EPSG:4326');
+    if (geom.flatCoordinates.length == 2) {
+        polygon = geom.getCoordinates();
+    } else {
+        polygon = geom.getCoordinates()[0];
+    }
+    //ap = polygon;
+    $("#drawnPolygon").text(JSON.stringify(polygon));
+    jQuery(requestModal).modal('show');
+}
+
+function drawPolyStart() {
+    jQuery(requestModal).modal('hide');
+    addInteraction('Polygon');
+}

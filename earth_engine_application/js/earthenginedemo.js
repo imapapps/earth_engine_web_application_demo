@@ -46,7 +46,38 @@ function meanImageByCollection() {
     });
 }
 
-function comingSoon() {
-    console.log("Coming Soon");
-    $("#overlay").hide();
+function timeSeriesIndex() {
+    theJson = {
+        collectionNameTimeSeries: $("#imageName").val(),
+        geometry: JSON.parse($("#drawnPolygon").text()),
+        dateFromTimeSeries: $("#fromDate").val(), 
+        dateToTimeSeries: $("#toDate").val(),
+        indexName: $("#bandselector").val(), 
+        reducer: $("#reducer").val(), 
+        scale: $("#scale").val(), 
+    };
+
+    $.ajax({
+        url: api_url + 'timeSeriesIndex',
+        type: "POST",
+        async: true,
+        crossDomain: true,
+        contentType: "application/json",
+        data: JSON.stringify(theJson)
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.warn(jqXHR + textStatus + errorThrown);
+        $("#overlay").hide();
+    }).done(function (data, _textStatus, _jqXHR) {
+        if (data.errMsg) {
+            console.info(data.errMsg);
+        } else {
+            if (data.hasOwnProperty("timeseries")) {
+                createChart('timeSeriesIndex', data.timeseries);
+            } else {
+                console.warn("Wrong Data Returned");
+                console.log(data);
+            }
+        }
+        $("#overlay").hide()
+    });
 }

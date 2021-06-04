@@ -67,9 +67,14 @@ function loadparameterPanel(which) {
       html += getToDateUI();
       html += getVisParamsUI();
       break;
-    case "comingSoon":
-      html += getComingSoonUI();
-      break;
+    case 'timeSeriesIndex':
+        html += getDrawGeometryBtn();
+        html += getImageNameWithBandSelectorUI();
+        html += getFromDateUI();
+        html += getToDateUI();
+        html += getReducerUI();
+        html += getScaleUI();
+        break;
     default:
     // code block
   }
@@ -140,12 +145,43 @@ function getVisParamsUI() {
   );
 }
 
-function getComingSoonUI() {
-    return (
+function getDrawGeometryBtn() {
+    return '<div class="form-group">' +
+        '<label for="draw">Draw polygon</label >' +
+        '<button id="draw" class="form-control" onclick="drawPolyStart()">Draw polygon</button>' +
+        '<label id="drawnPolygon" style="word-wrap: break-word;width:100%;"></label>' +
+        '</div>';
+}
+
+function getImageNameWithBandSelectorUI() {
+    return '<div class="form-group">' +
+        '<label for="imageName">Image Name</label >' +
+        '<input type="text" id="imageName" placeholder="MCD12Q1/MCD12Q1_005_2001_01_01" class="form-control"/>' +
+        '</div>' +
+        '<button type="button" class="btn btn-primary" onclick="loadBands()">Load Bands</button>' +
         '<div class="form-group">' +
-        "<label>We have not coded this yet, this modal will simply close witjh either button!</label >" +
-        "</div>"
-    );
+        '<label for="bandselector">Available Bands</label >' +
+        '<select name="bandselector" class="form-control" id="bandselector"></select>' +
+        '</div>';
+
+}
+
+function getReducerUI() {
+    return '<div class="form-group">' +
+        '<label for="reducer">Reducer</label >' +
+        '<select name="reducer" class="form-control" id="reducer">' +
+        '<option label="Min" value="min">Min</option>' +
+        '<option label="Max" value="max">Max</option>' +
+        ' <option label="Mean" value="mean">Mean</option>' +
+        '</select > ' +
+        '</div>';
+}
+
+function getScaleUI() {
+    return '<div class="form-group">' +
+        '<label for="scale">Scale</label >' +
+        '<input type="text" id="scale" placeholder="30" class="form-control"/>' +
+        '</div>';
 }
 
 function getCloseModalUI(route) {

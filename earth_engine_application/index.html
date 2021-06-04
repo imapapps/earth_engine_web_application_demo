@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8" />
     <title>Earth Engine Demo</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css"
-    />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" />
     <!-- Bootstrap core CSS -->
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          rel="stylesheet" />
     <link rel="stylesheet" href="css/earthenginedemo.css" />
 
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.js"
-      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/highcharts.js"></script>
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script src="js/ui_utils.js"></script>
     <script src="js/map_utils.js"></script>
+    <script src="js/chart_utils.js"></script>
     <script src="js/earthenginedemo.js"></script>
-  </head>
+</head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">EE App Demo</a>
@@ -118,14 +114,12 @@
             </h6>
             <ul class="nav flex-column mb-2" id="graphroutelist">
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="#"
-                  onclick="loadparameterPanel('comingSoon');event.preventDefault();"
-                  title="comingSoon route"
-                >
-                  <span data-feather="map"></span> comingSoon
-                </a>
+                  <a class="nav-link"
+                     href="#"
+                     onclick="loadparameterPanel('timeSeriesIndex');event.preventDefault();"
+                     title="timeSeriesIndex route">
+                      <span data-feather="map"></span> timeSeriesIndex
+                  </a>
               </li>
             </ul>
           </div>

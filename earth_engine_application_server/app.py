@@ -60,13 +60,12 @@ def mean_image_by_collections():
 @app.route('/timeSeriesIndex', methods=['POST'])
 def time_series_index():
     try:
-        print("made it to server")
         request_json = request.get_json()
         if request_json:
             geometry = request_json.get('geometry', None)
+            collection_name = request_json.get('collectionNameTimeSeries', None)
             if geometry:
-                # "MODIS/006/MOD13A2",
-                timeseries = get_time_series_by_collection_and_index(request_json.get('collectionNameTimeSeries', None),
+                timeseries = get_time_series_by_collection_and_index(collection_name,
                                                                      request_json.get('indexName', None),
                                                                      float(request_json.get('scale', 30)),
                                                                      geometry,

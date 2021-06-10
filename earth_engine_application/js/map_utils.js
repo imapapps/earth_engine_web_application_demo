@@ -48,7 +48,7 @@ function removeLayer(which) {
 }
 
 function addInteraction(which) {
-
+    removeLayer('drawLayer');
     var source = new ol.source.Vector({ wrapX: false });
     var vectorLayer = new ol.layer.Vector({
         source: source,
@@ -74,7 +74,6 @@ function drawEnd(event) {
     } else {
         polygon = geom.getCoordinates()[0];
     }
-    //ap = polygon;
     $("#drawnPolygon").text(JSON.stringify(polygon));
     jQuery(requestModal).modal('show');
 }

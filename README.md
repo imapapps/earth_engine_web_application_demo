@@ -2,6 +2,10 @@
 
 This is the code for a tutorial series named Accessing Earth Engine Data in Web Applications. The video series can be found in this [YouTube play list](https://www.youtube.com/watch?v=YfJUish92E8&list=PL6MV53L4XD09fk3xvbDN468Pc8eQLVWxQ)
 
+The series steps through the process of setting up a development environment where you will have two main code bases, a server-side code that will communicate directly with Earth Engine, and a client-side code that will communicate with the server-side code to pass parameters then properly display the results in the UI.
+
+In the first video you will learn how to setup your the server-side and client side environments. We will do a quick test to confirm that it is working. In the second video we will build out a test route which will return a tile url for a pre-defined earth engine image, and then display it on a map. Our thrid video will create a dynamic UI framework to request datasets from earth engine. We will add a new route called meanImageByCollection which will enable us to request any EE image collection, filter by date, and apply vision parameters. In video number four we will continue to expand the reusable framework to include graphing.
+
 ## Part 1 - Setup and Installation
 
 - [Video](https://www.youtube.com/watch?v=YfJUish92E8&t=1s)

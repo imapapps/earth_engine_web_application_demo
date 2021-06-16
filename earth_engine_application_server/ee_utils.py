@@ -54,7 +54,9 @@ def get_time_series_by_collection_and_index(collection_name, index_name, scale, 
                 index_value = image.reduceRegion(the_reducer, geometry, scale, maxPixels=1.0E13)
             return ee.Image().set('indexValue', [ee.Number(image.get('system:time_start')), index_value])
 
-        return index_collection.map(get_index).aggregate_array('indexValue').getInfo()
+        return {
+            'timeseries': index_collection.map(get_index).aggregate_array('indexValue').getInfo()
+        }
     except Exception as e:
         print(str(e))
         raise Exception(sys.exc_info()[0])

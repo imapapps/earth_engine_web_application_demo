@@ -65,7 +65,7 @@ def time_series_index():
             geometry = request_json.get('geometry', None)
             collection_name = request_json.get('collectionNameTimeSeries', None)
             if geometry:
-                timeseries = get_time_series_by_collection_and_index(collection_name,
+                values = get_time_series_by_collection_and_index(collection_name,
                                                                      request_json.get('indexName', None),
                                                                      float(request_json.get('scale', 30)),
                                                                      geometry,
@@ -73,9 +73,6 @@ def time_series_index():
                                                                      request_json.get('dateToTimeSeries', None),
                                                                      request_json.get('reducer', None)
                                                                      )
-                values = {
-                    'timeseries': timeseries
-                }
             else:
                 raise Exception
         else:
